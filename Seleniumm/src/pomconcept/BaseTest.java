@@ -5,14 +5,17 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeSuite;
 
 import mainjava.BaseClass;
 import mainjava.DashBoardPage;
 import mainjava.LoginPage;
+import mainjava.PimPage;
+import org.testng.annotations.AfterSuite;
 
 public class BaseTest extends BaseClass{
 	
-	@BeforeClass
+	@BeforeSuite
 	public void initBrowser() {
 		
 		System.setProperty("webdriver.chrome.driver", "D:\\sele\\chromedriver.exe");
@@ -27,11 +30,16 @@ public class BaseTest extends BaseClass{
 	public void pageObjects() {
 		loginPage = new LoginPage(driver);
 		dashboardPage = new DashBoardPage(driver);
+		pimPage = new PimPage(driver);
 	}
 	@AfterClass
-	public void exits() {
+	public void logOutUser() {
+		dashboardPage.logOut();
+	
+	}
+	@AfterSuite
+	public void logoutUser() {
 		driver.quit();
 	}
-	
 	
 }
