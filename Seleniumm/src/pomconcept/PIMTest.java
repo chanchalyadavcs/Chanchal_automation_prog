@@ -31,4 +31,8 @@ public class PIMTest extends CommonTest{
 	public void changess() {
 		AssertJUnit.assertEquals(false, false);
 	}
+	@Test(priority=7,groups = {"smoke","regression"})
+	public void tests() {
+		AssertJUnit.assertEquals(false, false);
+	}
 }
